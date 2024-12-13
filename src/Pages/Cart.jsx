@@ -35,7 +35,6 @@ const Cart = () => {
   const checkout = () => {
     dispatch(emptyCart());
     setTimeout(() => {
-     
       setShow(false);
     }, 3000);
 
@@ -47,64 +46,66 @@ const Cart = () => {
       <Header />
       <div style={{ paddingTop: '100px' }} className="container">
         <div className="row">
-          {/* Left Section: Cart Table */}
           {userCart?.length > 0 ? (
             <>
-              <div className="col-lg-8 mb-4">
+              {/* Cart Table Section */}
+              <div className="col-lg-8 col-md-12 mb-4">
                 <div className="card shadow-sm border-0">
                   <div className="card-header bg-dark text-white">
                     <h5 className="mb-0">Your Shopping Cart</h5>
                   </div>
                   <div className="card-body">
-                    <table className="table table-hover">
-                      <thead className="thead-light">
-                        <tr>
-                          <th>Image</th>
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Quantity</th>
-                          <th>Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {userCart?.map(products => (
-                          <tr key={products.id}>
-                            <td>
-                              <img
-                                src={products?.images}
-                                alt="Product"
-                                className="img-fluid rounded"
-                                style={{ width: '60px', height: '60px' }}
-                              />
-                            </td>
-                            <td>{products?.title}</td>
-                            <td>{products?.totalprice}</td>
-                            <td>
-                              <div className="d-flex align-items-center">
-                                <button onClick={() => handleDecrementQuantity(products)} className="btn btn-sm btn-outline-secondary">
-                                  -
-                                </button>
-                                <span className="mx-2">{products?.quantity}</span>
-                                <button onClick={() => dispatch(quantityIncrement(products?.id))} className="btn btn-sm btn-outline-secondary">
-                                  +
-                                </button>
-                              </div>
-                            </td>
-                            <td>
-                              <button onClick={() => dispatch(removeCartItem(products?.id))} className="btn btn-sm btn-danger">
-                                Remove
-                              </button>
-                            </td>
+                    <div style={{ overflowX: 'auto' }}>
+                      <table className="table table-hover">
+                        <thead className="thead-light">
+                          <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {userCart?.map(products => (
+                            <tr key={products.id}>
+                              <td>
+                                <img
+                                  src={products?.images}
+                                  alt="Product"
+                                  className="img-fluid rounded"
+                                  style={{ width: '60px', height: '60px' }}
+                                />
+                              </td>
+                              <td>{products?.title}</td>
+                              <td>{products?.totalprice}</td>
+                              <td>
+                                <div className="d-flex align-items-center">
+                                  <button onClick={() => handleDecrementQuantity(products)} className="btn btn-sm btn-outline-secondary">
+                                    -
+                                  </button>
+                                  <span className="mx-2">{products?.quantity}</span>
+                                  <button onClick={() => dispatch(quantityIncrement(products?.id))} className="btn btn-sm btn-outline-secondary">
+                                    +
+                                  </button>
+                                </div>
+                              </td>
+                              <td>
+                                <button onClick={() => dispatch(removeCartItem(products?.id))} className="btn btn-sm btn-danger">
+                                  Remove
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Right Section: Cart Summary */}
-              <div className="col-lg-4">
+              {/* Cart Summary Section */}
+              <div className="col-lg-4 col-md-12">
                 <div className="card shadow-sm border-0">
                   <div className="card-header bg-dark text-white">
                     <h5 className="mb-0">Cart Summary</h5>
@@ -115,21 +116,27 @@ const Cart = () => {
                       <strong>$ {cartTotal}</strong>
                     </p>
                     <hr />
-                    <button onClick={checkout} className="btn btn-primary btn-block ms-1">
+                    <button onClick={checkout} className="btn btn-primary btn-block w-100">
                       Proceed to Checkout
                     </button>
-                   <Link to={'/view'}> <button style={{marginLeft:"20px"}} className="btn btn-outline-secondary btn-block mt-2">
-                     Continue Shopping
-                    </button>
+                    <Link to={'/view'}>
+                      <button style={{ marginTop: '10px' }} className="btn btn-outline-secondary btn-block w-100">
+                        Continue Shopping
+                      </button>
                     </Link>
                   </div>
                 </div>
               </div>
             </>
           ) : (
-            <div className="align-items-center">
-              <img style={{ height: '80vh' }} className="w-100" src="https://schoolville.com/assets/img/empty-cart-illustration.gif" alt="" />
-              <h2 className="text-danger text-center">YOUR CART IS EMPTY</h2>
+            <div className="text-center">
+              <img
+                style={{ maxHeight: '400px', width: '100%' }}
+                className="img-fluid"
+                src="https://schoolville.com/assets/img/empty-cart-illustration.gif"
+                alt="Empty Cart"
+              />
+              <h2 className="text-danger mt-3">YOUR CART IS EMPTY</h2>
             </div>
           )}
         </div>
