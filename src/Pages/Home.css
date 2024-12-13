@@ -1,0 +1,115 @@
+/* Home.css */
+
+/* Add subtle shadow for rounded images */
+.img-fluid {
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   transition: transform 0.2s ease-in-out;
+ }
+ 
+ .img-fluid:hover {
+   transform: scale(1.05);
+ }
+ 
+ /* Hero Section */
+ .hero-text {
+   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+ }
+ 
+ .btn-info {
+   border-radius: 25px;
+ }
+ 
+ .btn-info:hover {
+   background-color: #117a8b;
+   color: white;
+ }
+ 
+ /* Promo Section */
+ .shadow-lg {
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+ }
+ 
+ .card-img-top {
+   object-fit: cover;
+ }
+ 
+ .btn-success {
+   border-radius: 20px;
+   padding: 10px 25px;
+ }
+ 
+ .btn-success:hover {
+   background-color: #218838;
+ }
+ 
+
+
+
+
+ /* General Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Gradient Overlay */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+/* Text Gradient */
+.text-gradient {
+  background: linear-gradient(to right, #ff8c00, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+/* Glass Buttons */
+.glass-button {
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s ease;
+}
+
+.glass-button:hover {
+  transform: scale(1.1);
+}
+
+/* Neumorphic Buttons */
+.neumorphic-button {
+  background: #e0e0e0;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  transition: all 0.3s ease;
+}
+
+.neumorphic-button:hover {
+  box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff;
+}
+button:hover.stars{
+  display: block;
+  filter: drop-shadow(0 0 10px #fffdef);
+  
+}
